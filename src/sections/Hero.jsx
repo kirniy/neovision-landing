@@ -38,7 +38,7 @@ export const Hero = () => {
                     zIndex: 0
                 }}
             >
-                <source src="/assets/hero_video.mp4?v=2" type="video/mp4" />
+                <source src="/assets/hero_video.mp4?v=3" type="video/mp4" />
             </video>
 
             {/* Dark overlay */}
@@ -88,7 +88,7 @@ export const Hero = () => {
                                 fontFamily: 'var(--font-header)',
                                 fontWeight: 700
                             }}>
-                                Лейбл и&nbsp;Промо
+                                Лейбл и Промо
                             </p>
                             <p style={{
                                 fontSize: '1.1rem',
@@ -97,7 +97,7 @@ export const Hero = () => {
                                 marginBottom: '2rem',
                                 mixBlendMode: 'difference'
                             }}>
-                                Экспериментальное пространство визуального и звукового искусства.
+                                Экспериментальное объединение визуального и музыкального искусства.
                             </p>
                         </div>
                     </div>

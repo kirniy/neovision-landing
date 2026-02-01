@@ -41,7 +41,7 @@ export const Footer = () => {
                     opacity: 0.5,
                     display: 'block'
                 }} />
-                <div style={{ opacity: 0.5 }}>&copy; 2025 NeoVision</div>
+                <div style={{ opacity: 0.5 }}>&copy; {new Date().getFullYear()} NeoVision</div>
             </div>
             <div style={{
                 display: 'flex',

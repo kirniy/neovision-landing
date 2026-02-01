@@ -76,16 +76,9 @@ export const Events = () => {
                         setHasUpcoming(true);
                         setEvents(transformEvents(upcomingEvents.slice(0, 4), dateCounts));
                     } else {
-                        // No upcoming - show most recent past events
+                        // No upcoming - do not show past events
                         setHasUpcoming(false);
-                        const recentEvents = [...allEvents]
-                            .sort((a, b) => {
-                                const dateA = a.shows?.[0]?.date ? new Date(a.shows[0].date) : new Date(0);
-                                const dateB = b.shows?.[0]?.date ? new Date(b.shows[0].date) : new Date(0);
-                                return dateB - dateA; // Most recent first (descending)
-                            })
-                            .slice(0, 4);
-                        setEvents(transformEvents(recentEvents, dateCounts));
+                        setEvents([]);
                     }
                 }
             } catch (error) {

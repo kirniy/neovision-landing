@@ -38,7 +38,8 @@ export const Hero = () => {
                     zIndex: 0
                 }}
             >
-                <source src="/assets/hero_video.mp4?v=3" type="video/mp4" />
+                <source src="/assets/hero_video.webm" type="video/webm" />
+                <source src="/assets/hero_video.mp4" type="video/mp4" />
             </video>
 
             {/* Dark overlay */}

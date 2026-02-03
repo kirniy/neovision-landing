@@ -69,15 +69,133 @@ export const About = () => {
                         boxSizing: 'border-box'
                     }} className="widget-scroll">
                         {tracks.map((track) => (
-                            <React.Fragment key={track.id}>
-                                {activeTrackId === track.id ? (
+                            <div key={track.id} style={{ width: '100%' }}>
+                                {/* Track Card - visible when not playing */}
+                                <div
+                                    className="widget-item"
+                                    style={{
+                                        display: activeTrackId === track.id ? 'none' : 'flex',
+                                        alignItems: 'center',
+                                        gap: '1rem',
+                                        padding: '0.8rem',
+                                        border: '1px solid #333',
+                                        background: 'transparent',
+                                        transition: 'all 0.3s ease',
+                                        height: '80px',
+                                        boxSizing: 'border-box'
+                                    }}
+                                >
+                                    {/* Cover Image */}
+                                    <div style={{
+                                        width: '60px',
+                                        height: '60px',
+                                        flexShrink: 0,
+                                        filter: 'grayscale(100%)',
+                                        backgroundImage: `url(${track.img})`,
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center',
+                                        border: '1px solid #222'
+                                    }} />
+
+                                    {/* Info */}
+                                    <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, overflow: 'hidden' }}>
+                                        <span style={{
+                                            color: '#fff',
+                                            fontFamily: 'var(--font-header)',
+                                            fontSize: '1rem',
+                                            whiteSpace: 'nowrap',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                            textTransform: 'uppercase'
+                                        }}>{track.title}</span>
+                                        <span style={{
+                                            color: '#666',
+                                            fontFamily: 'var(--font-body)',
+                                            fontSize: '0.8rem',
+                                            whiteSpace: 'nowrap',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis'
+                                        }}>{track.artist}</span>
+                                    </div>
+
+                                    {/* Action Buttons */}
+                                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                                        {/* Play Button */}
+                                        <div
+                                            style={{
+                                                width: '30px',
+                                                height: '30px',
+                                                borderRadius: '50%',
+                                                border: '1px solid #444',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                color: '#fff',
+                                                opacity: 0.7,
+                                                cursor: 'pointer',
+                                                transition: 'all 0.3s ease'
+                                            }}
+                                            className="widget-play-btn"
+                                            onClick={() => setActiveTrackId(track.id)}
+                                        >
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </div>
+
+                                        {/* Favorite Button */}
+                                        <a
+                                            href={track.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{
+                                                width: '30px',
+                                                height: '30px',
+                                                borderRadius: '50%',
+                                                border: '1px solid #444',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                color: '#fff',
+                                                opacity: 0.7,
+                                                cursor: 'pointer',
+                                                textDecoration: 'none',
+                                                transition: 'all 0.3s ease'
+                                            }}
+                                            className="widget-fav-btn"
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* Iframe Player - always rendered but hidden when not active */}
+                                <div style={{
+                                    display: activeTrackId === track.id ? 'block' : 'none',
+                                    width: '100%',
+                                    height: '80px',
+                                    minHeight: '80px',
+                                    maxHeight: '80px',
+                                    flexShrink: 0,
+                                    overflow: 'hidden',
+                                    border: '1px solid #333',
+                                    background: 'transparent',
+                                    position: 'relative',
+                                    boxSizing: 'border-box'
+                                }}>
                                     <iframe
+                                        key={track.id}
                                         frameBorder="0"
                                         allow="clipboard-write; autoplay; encrypted-media"
                                         style={{
                                             border: 'none',
                                             width: '100%',
-                                            height: '80px', // Match card height
+                                            height: '135px',
+                                            marginTop: '-10px',
                                             flexShrink: 0,
                                             filter: 'grayscale(100%)',
                                             display: 'block',
@@ -86,73 +204,8 @@ export const About = () => {
                                         src={`https://music.yandex.ru/iframe/${track.type}/${track.type === 'track' ? `${track.id}/${track.albumId}` : track.albumId}?theme=light&auto=1&cover=hide`}
                                         title={track.title}
                                     />
-                                ) : (
-                                    <div
-                                        className="widget-item"
-                                        style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '1rem',
-                                            padding: '0.8rem',
-                                            border: '1px solid #333', // Minimal contour
-                                            background: 'transparent',
-                                            transition: 'all 0.3s ease',
-                                            cursor: 'pointer'
-                                        }}
-                                        onClick={() => setActiveTrackId(track.id)}
-                                    >
-                                        {/* Cover Image */}
-                                        <div style={{
-                                            width: '60px',
-                                            height: '60px',
-                                            flexShrink: 0,
-                                            filter: 'grayscale(100%)', // B&W Photo
-                                            backgroundImage: `url(${track.img})`,
-                                            backgroundSize: 'cover',
-                                            backgroundPosition: 'center',
-                                            border: '1px solid #222' // Subtle border for image
-                                        }} />
-
-                                        {/* Info */}
-                                        <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, overflow: 'hidden' }}>
-                                            <span style={{
-                                                color: '#fff',
-                                                fontFamily: 'var(--font-header)',
-                                                fontSize: '1rem',
-                                                whiteSpace: 'nowrap',
-                                                overflow: 'hidden',
-                                                textOverflow: 'ellipsis',
-                                                textTransform: 'uppercase'
-                                            }}>{track.title}</span>
-                                            <span style={{
-                                                color: '#666',
-                                                fontFamily: 'var(--font-body)',
-                                                fontSize: '0.8rem',
-                                                whiteSpace: 'nowrap',
-                                                overflow: 'hidden',
-                                                textOverflow: 'ellipsis'
-                                            }}>{track.artist}</span>
-                                        </div>
-
-                                        {/* Play Icon */}
-                                        <div style={{
-                                            width: '30px',
-                                            height: '30px',
-                                            borderRadius: '50%',
-                                            border: '1px solid #444',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            color: '#fff',
-                                            opacity: 0.7
-                                        }} className="widget-arrow">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M8 5v14l11-7z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                )}
-                            </React.Fragment>
+                                </div>
+                            </div>
                         ))}
                     </div>
                     <style>{`
@@ -171,7 +224,8 @@ export const About = () => {
                             border-color: #666 !important;
                             background: rgba(255,255,255,0.03) !important;
                         }
-                        .widget-item:hover .widget-arrow {
+                        .widget-play-btn:hover,
+                        .widget-fav-btn:hover {
                             border-color: #fff !important;
                             opacity: 1 !important;
                         }

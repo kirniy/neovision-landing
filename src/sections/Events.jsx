@@ -180,7 +180,7 @@ export const Events = () => {
 
             <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
+                gridTemplateColumns: 'repeat(2, 1fr)',
                 gap: '2rem',
                 width: '100%',
             }}>
@@ -194,24 +194,25 @@ export const Events = () => {
                         onClick={() => navigate(evt.link, { state: { from: 'home' } })}
                         style={{
                             display: 'flex',
-                            flexDirection: 'column',
+                            flexDirection: 'row',
                             backgroundColor: '#0a0a0a',
                             border: '1px solid #222',
                             overflow: 'hidden',
                             position: 'relative',
                             opacity: loading ? 0.5 : 1,
                             transition: 'opacity 0.3s ease',
-                            cursor: 'pointer'
+                            cursor: 'pointer',
+                            minHeight: '280px'
                         }}
                         whileHover={{
                             borderColor: '#444',
                             transition: { duration: 0.3 }
                         }}
                     >
-                        {/* Image Container */}
+                        {/* Image Container - Left Side */}
                         <div style={{
-                            width: '100%',
-                            aspectRatio: '3/4',
+                            width: '40%',
+                            minWidth: '40%',
                             overflow: 'hidden',
                             position: 'relative',
                             backgroundColor: '#111'
@@ -266,79 +267,95 @@ export const Events = () => {
                              `}</style>
                         </div>
 
-                        {/* Content */}
+                        {/* Content - Right Side */}
                         <div style={{
-                            padding: '1.5rem',
+                            padding: '2rem',
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '1rem',
-                            borderTop: '1px solid #222',
-                            flex: 1
+                            gap: '1.5rem',
+                            borderLeft: '1px solid #222',
+                            flex: 1,
+                            justifyContent: 'space-between'
                         }}>
                             {!evt.isFeature ? (
                                 <>
                                     <div style={{
                                         display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center'
+                                        flexDirection: 'column',
+                                        gap: '1rem'
                                     }}>
-                                        <span style={{
-                                            fontFamily: 'var(--font-body)',
-                                            color: '#888',
-                                            fontSize: '0.9rem',
-                                            letterSpacing: '0.05em'
+                                        <div style={{
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            alignItems: 'center',
+                                            flexWrap: 'wrap',
+                                            gap: '0.5rem'
                                         }}>
-                                            {evt.date}
-                                        </span>
-                                        <span style={{
-                                            fontFamily: 'var(--font-body)',
-                                            color: '#666',
-                                            fontSize: '0.8rem',
+                                            <span style={{
+                                                fontFamily: 'var(--font-body)',
+                                                color: '#888',
+                                                fontSize: '1rem',
+                                                letterSpacing: '0.05em'
+                                            }}>
+                                                {evt.date}
+                                            </span>
+                                            <span style={{
+                                                fontFamily: 'var(--font-body)',
+                                                color: '#666',
+                                                fontSize: '0.85rem',
+                                                textTransform: 'uppercase',
+                                                letterSpacing: '0.1em'
+                                            }}>
+                                                {evt.venue}
+                                            </span>
+                                        </div>
+
+                                        <h3 style={{
+                                            fontFamily: 'var(--font-header)',
+                                            fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)',
+                                            margin: 0,
+                                            lineHeight: 1,
                                             textTransform: 'uppercase'
                                         }}>
-                                            {evt.venue}
-                                        </span>
+                                            {evt.city}
+                                        </h3>
                                     </div>
-
-                                    <h3 style={{
-                                        fontFamily: 'var(--font-header)',
-                                        fontSize: '1.5rem',
-                                        margin: 0,
-                                        lineHeight: 1,
-                                        textTransform: 'uppercase'
-                                    }}>
-                                        {evt.city}
-                                    </h3>
                                 </>
                             ) : (
                                 <>
                                     <div style={{
-                                        fontFamily: 'var(--font-body)',
-                                        color: '#888',
-                                        fontSize: '0.9rem',
-                                        letterSpacing: '0.05em'
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '1rem'
                                     }}>
-                                        {evt.subtitle}
+                                        <div style={{
+                                            fontFamily: 'var(--font-body)',
+                                            color: '#888',
+                                            fontSize: '1rem',
+                                            letterSpacing: '0.05em'
+                                        }}>
+                                            {evt.subtitle}
+                                        </div>
+                                        <h3 style={{
+                                            fontFamily: 'var(--font-header)',
+                                            fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)',
+                                            margin: 0,
+                                            lineHeight: 1,
+                                            textTransform: 'uppercase'
+                                        }}>
+                                            {evt.title}
+                                        </h3>
                                     </div>
-                                    <h3 style={{
-                                        fontFamily: 'var(--font-header)',
-                                        fontSize: '1.5rem',
-                                        margin: 0,
-                                        lineHeight: 1,
-                                        textTransform: 'uppercase'
-                                    }}>
-                                        {evt.title}
-                                    </h3>
                                 </>
                             )}
 
-                            <div style={{ marginTop: 'auto', paddingTop: '0.5rem' }} onClick={(e) => e.stopPropagation()}>
+                            <div onClick={(e) => e.stopPropagation()}>
                                 <MagneticButton
                                     href={evt.isFeature ? (evt.ticketUrl || evt.link) : evt.link}
                                     variant="secondary"
                                     style={{
-                                        fontSize: '0.75rem',
-                                        padding: '0.6rem 1rem'
+                                        fontSize: '0.8rem',
+                                        padding: '0.75rem 1.5rem'
                                     }}
                                 >
                                     {evt.isFeature ? 'СЛУШАТЬ' : 'Подробнее'}
@@ -353,12 +370,22 @@ export const Events = () => {
             <style>{`
                 @media (max-width: 1024px) {
                     #events > div:nth-of-type(2) {
-                        grid-template-columns: repeat(2, 1fr) !important;
+                        grid-template-columns: 1fr !important;
                     }
                 }
-                @media (max-width: 600px) {
-                    #events > div:nth-of-type(2) {
-                        grid-template-columns: 1fr !important;
+                @media (max-width: 768px) {
+                    #events > div:nth-of-type(2) > div {
+                        flex-direction: column !important;
+                        min-height: auto !important;
+                    }
+                    #events > div:nth-of-type(2) > div > div:first-child {
+                        width: 100% !important;
+                        aspect-ratio: 3/4;
+                    }
+                    #events > div:nth-of-type(2) > div > div:nth-child(2) {
+                        border-left: none !important;
+                        border-top: 1px solid #222 !important;
+                        padding: 1.5rem !important;
                     }
                 }
             `}</style>

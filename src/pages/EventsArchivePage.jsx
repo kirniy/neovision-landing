@@ -277,9 +277,8 @@ export const EventsArchivePage = () => {
                                                 backgroundImage: `url(${event.posterUrl || '/assets/event_poster.png'})`,
                                                 backgroundSize: 'cover',
                                                 backgroundPosition: 'center',
-                                                filter: isPast ? 'grayscale(100%)' : 'grayscale(50%)',
-                                                opacity: isPast ? 0.7 : 1,
-                                                transition: 'transform 0.5s ease, filter 0.5s ease'
+                                                opacity: isPast ? 0.8 : 1,
+                                                transition: 'transform 0.5s ease'
                                             }}
                                             className="archive-event-image"
                                         />
@@ -438,7 +437,6 @@ export const EventsArchivePage = () => {
             <style>{`
                 .archive-event-image:hover {
                     transform: scale(1.05);
-                    filter: grayscale(0%) !important;
                 }
                 @media (max-width: 1024px) {
                     .container > div:nth-of-type(3) {

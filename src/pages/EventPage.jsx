@@ -425,11 +425,8 @@ export const EventPage = () => {
                                     width: '100%',
                                     height: '100%',
                                     objectFit: 'cover',
-                                    filter: 'grayscale(100%)',
-                                    transition: 'filter 0.5s ease'
+                                    transition: 'transform 0.5s ease'
                                 }}
-                                onMouseOver={(e) => e.target.style.filter = 'grayscale(0%)'}
-                                onMouseOut={(e) => e.target.style.filter = 'grayscale(100%)'}
                             />
                         </div>
                     </motion.div>

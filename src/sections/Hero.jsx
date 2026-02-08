@@ -138,6 +138,7 @@ export const Hero = () => {
                 </motion.div>
             </div>
 
+
             {/* Inline Media Query for Mobile Layout would be ideal in CSS, but for inline strictly: */}
             {/* Since we can't easily do media queries in inline styles without a library or style tag hook,
                 we rely on the grid layout behaving reasonably.

@@ -202,7 +202,7 @@ export const Events = () => {
                             opacity: loading ? 0.5 : 1,
                             transition: 'opacity 0.3s ease',
                             cursor: 'pointer',
-                            minHeight: '280px'
+                            minHeight: '380px'
                         }}
                         whileHover={{
                             borderColor: '#444',
@@ -211,8 +211,8 @@ export const Events = () => {
                     >
                         {/* Image Container - Left Side */}
                         <div style={{
-                            width: '40%',
-                            minWidth: '40%',
+                            width: '45%',
+                            minWidth: '45%',
                             overflow: 'hidden',
                             position: 'relative',
                             backgroundColor: '#111'
@@ -223,8 +223,8 @@ export const Events = () => {
                                 backgroundImage: `url(${evt.image})`,
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
-                                filter: evt.isFeature ? 'invert(1) grayscale(100%)' : 'grayscale(100%)',
-                                opacity: evt.isFeature ? 0.8 : 1,
+                                filter: 'none',
+                                opacity: evt.isFeature ? 0.9 : 1,
                                 transition: 'transform 0.5s ease, filter 0.5s ease'
                             }}
                                 className="event-image"
@@ -261,8 +261,7 @@ export const Events = () => {
                             <style>{`
                                 .event-row:hover .event-image,
                                 div:hover > div > .event-image {
-                                    transform: scale(1.05);
-                                    filter: grayscale(0%);
+                                    transform: none;
                                 }
                              `}</style>
                         </div>

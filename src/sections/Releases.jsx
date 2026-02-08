@@ -54,7 +54,7 @@ const releases = [
 
 export const ReleasesList = () => {
     return (
-        <section className="container" style={{ padding: '6rem 4vw' }}>
+        <section className="container" id="releases" style={{ padding: '6rem 4vw' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem' }}>
                 <h2 style={{
                     fontSize: 'clamp(3rem, 5vw, 4rem)',

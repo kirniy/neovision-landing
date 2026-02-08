@@ -7,6 +7,7 @@ import { About } from './sections/About';
 import { Gallery } from './sections/Gallery';
 import { ReleasesList as Releases } from './sections/Releases';
 import { Events } from './sections/Events';
+
 import { Footer } from './sections/Footer';
 import { GalleryPage } from './pages/GalleryPage';
 import Preloader from './components/Preloader';
@@ -21,6 +22,7 @@ const LandingPage = () => (
     <Navbar />
     <Hero />
     <Events />
+
     <About />
     <Gallery />
     <Releases />

@@ -19,13 +19,29 @@ export const Gallery = () => {
         <section className="container" style={{ padding: '6rem 4vw' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem' }}>
                 <h2 style={{ fontSize: 'clamp(3rem, 5vw, 4rem)', margin: 0 }}>Галерея</h2>
-                <Link to="/gallery" style={{
-                    fontSize: '1rem',
-                    textDecoration: 'underline',
-                    textUnderlineOffset: '4px',
-                    textTransform: 'uppercase',
-                    opacity: 0.7
-                }}>
+                <Link
+                    to="/gallery"
+                    style={{
+                        fontSize: '0.9rem',
+                        textDecoration: 'none',
+                        textTransform: 'uppercase',
+                        color: '#888',
+                        letterSpacing: '0.1em',
+                        borderBottom: '1px solid #444',
+                        paddingBottom: '2px',
+                        transition: 'color 0.3s, border-color 0.3s',
+                        whiteSpace: 'nowrap',
+                        fontFamily: 'var(--font-body)'
+                    }}
+                    onMouseOver={(e) => {
+                        e.target.style.color = '#fff';
+                        e.target.style.borderColor = '#fff';
+                    }}
+                    onMouseOut={(e) => {
+                        e.target.style.color = '#888';
+                        e.target.style.borderColor = '#444';
+                    }}
+                >
                     Посмотреть все
                 </Link>
             </div>

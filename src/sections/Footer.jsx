@@ -52,7 +52,7 @@ export const Footer = () => {
             }}>
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                     <a href="#" onClick={(e) => e.preventDefault()} style={{ pointerEvents: 'none', color: '#666', textDecoration: 'none' }}>Instagram *</a>
-                    <a href="https://t.me/neovision" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>Telegram</a>
+                    <a href="https://t.me/neovisionpromo" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>Telegram</a>
                     <a href="mailto:contact@neovision.com" style={{ color: 'inherit', textDecoration: 'none' }}>Email</a>
                 </div>
                 <div style={{ fontSize: '0.6rem', opacity: 0.3, maxWidth: '300px', textAlign: 'right' }}>
